@@ -22,10 +22,16 @@ class autonomousControl{
 
   private:
     struct PIDSettings {
+      //Group of variables. good is a version of it
       float target; float curr; float error; float prevError;
             float derivative; float totalError;
       float kP, kI, kD;
+      //curr is curent value
+      // kp is current error
+      // I adds error over time till infinity
+      // change of error
       int cap;
+      // limits I 
     };
 
     PIDSettings drivePID;
@@ -41,6 +47,9 @@ class autonomousControl{
     double vectorD[2];
     float vMag;
     double angleVoltage;
+    bool posUpdated = false;
+    int mState = 0;
+    float xTarget, yTarget;
     
 
     void moveDrive(float vDrive, float vTurn);
@@ -51,7 +60,8 @@ class autonomousControl{
     void updateCurrPos();
     float averageRPM();
     float updatePID(PIDSettings *good);
-    int turnCap(float distanceMag);
+    int turnCapp(float distanceMag);
     void movAB();
     void intakeMove();
+    bool isMovingD();
 };

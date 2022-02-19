@@ -13,5 +13,6 @@ class userControl{
 
     void driveB();
     void setBrakeMode();
+    void turnUntil();
 };
 

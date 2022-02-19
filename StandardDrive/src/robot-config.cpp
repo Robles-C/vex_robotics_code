@@ -15,17 +15,21 @@ robotChasis::robotChasis( float wD, float tcL, float tcR, float tcB){
 }
 
 void robotChasis::set_drive_break_type(brakeType B){
-  frontLeft.setBrake(B);
-  frontRight.setBrake(B);
-  backLeft.setBrake(B);
-  backRight.setBrake(B);
+  LeftRear.setBrake(B);
+  LeftMid.setBrake(B);
+  LeftFront.setBrake(B);
+  RightRear.setBrake(B);
+  RightMid.setBrake(B);
+  RightFront.setBrake(B);
 }
 
 void robotChasis::stopMotors(){
-  frontLeft.stop();
-  frontRight.stop();
-  backLeft.stop();
-  backRight.stop();
+  LeftRear.stop();
+  LeftMid.stop();
+  LeftFront.stop();
+  RightFront.stop();
+  RightMid.stop();
+  RightRear.stop();
 }
 
 double robotChasis::getPI() { return PI; }
@@ -40,6 +44,7 @@ void vexcodeInit(robotChasis *robot1) {
   robot1->backTracker.resetPosition();
 
   wait(500, msec);
+  
   // Gyro Callibrates
   /*robot1->gyroM.calibrate();
   while(robot1->gyroM.isCalibrating()){
